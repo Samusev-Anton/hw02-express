@@ -1,8 +1,10 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 const contactsRouter = require("./routes/api/contacts");
+const { error } = require("./schemas/contacts");
 
 const app = express();
 
@@ -28,3 +30,19 @@ app.use((err, req, res, next) => {
 // });
 
 module.exports = app;
+
+// mongodb+srv://Samusev:zoQ9yklohgNggTzP@cluster0.oa5lfc6.mongodb.net/test
+
+// mongodb+srv://Samusev:zoQ9yklohgNggTzP@cluster0.oa5lfc6.mongodb.net/firstbase?retryWrites=true&w=majority
+
+require("dotenv").config();
+
+const { DB_HOST } = process.env;
+
+mongoose
+  .connect(DB_HOST)
+  .then(() => console.log("Database connect"))
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });
