@@ -29,7 +29,3 @@
 - `npm run start:dev` &mdash; старт сервера в режимі розробки (development)
 - `npm run lint` &mdash; запустити виконання перевірки коду з eslint, необхідно виконувати перед кожним PR та виправляти всі помилки лінтера
 - `npm lint:fix` &mdash; та ж перевірка лінтера, але з автоматичними виправленнями простих помилок
-
-ryIm7KHO7v2b1Ncv
-
-mongodb+srv://Anton:ryIm7KHO7v2b1Ncv@cluster0.ojv1dqr.mongodb.net/?retryWrites=true&w=majority
