@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 const bcrypt = require("bcryptjs");
+const { handleMongooseError } = require("../helpers");
 
 const userSignUpSchema = Schema(
   {
@@ -28,9 +29,15 @@ const userSignUpSchema = Schema(
       type: String,
       default: null,
     },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true }
 );
+
+userSignUpSchema.post("save", handleMongooseError);
 
 userSignUpSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
@@ -50,6 +57,11 @@ const joiSignInSchema = Joi.object({
 const joiSubscriptionSchema = Joi.object({
   subscription: Joi.string().valid("starter", "pro", "business").required(),
 });
+
+// какой тут метод нужно передавать для валидации файла?
+// const joiAvatarSchema = Joi.object({
+//   avatarURL: Joi.string().required(),
+// });
 
 const User = model("user", userSignUpSchema);
 
