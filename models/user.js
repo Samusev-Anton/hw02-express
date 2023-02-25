@@ -33,6 +33,10 @@ const userSignUpSchema = Schema(
       type: String,
       required: true,
     },
+    avatarCloudId: {
+      type: String,
+      default: null,
+    },
   },
   { versionKey: false, timestamps: true }
 );

@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const { users: ctrl } = require("../../controllers");
 const { auth, ctrlWrraper, validation, upload } = require("../../middlewares");
+const { uploadCloud } = require("../../middlewares/uploadCloud");
 const {
   joiSignUpSchema,
   joiSignInSchema,
@@ -28,6 +29,14 @@ router.patch(
   upload.single("avatar"),
   // validation(joiAvatarSchema),
   ctrlWrraper(ctrl.avatarUpdate)
+);
+
+router.patch(
+  "/cloudavatars",
+  auth,
+  uploadCloud.single("avatar"),
+  // validation(joiAvatarSchema),
+  ctrlWrraper(ctrl.updateAvatarToCloud)
 );
 
 module.exports = router;

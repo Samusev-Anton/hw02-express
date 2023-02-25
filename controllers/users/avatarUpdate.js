@@ -23,18 +23,6 @@ const avatarUpdate = async (req, res) => {
       )
       .writeAsync(tempUpload);
 
-    // TODO: не работает, пока не знаю почему
-    // cloudinary.config({
-    //   cloud_name: process.env.CLOUD_NAME,
-    //   api_key: process.env.API_KEY,
-    //   api_secret: process.env.API_SECRET,
-    // });
-
-    // cloudinary.v2.uploader
-    //   .upload(tempUpload)
-    //   .then((responce) => console.log(responce));
-
-    //   todo: delete old avatar
     const resultUpload = path.join(avatarsDir, `${_id}${originalname}`);
     await fs.rename(tempUpload, resultUpload);
     const avatarURL = path.join("public", "avatars", `${_id}${originalname}`);
