@@ -4,6 +4,22 @@ const cors = require("cors");
 
 const dotenv = require("dotenv");
 dotenv.config();
+const sgMail = require("@sendgrid/mail");
+const { SENDGRID_KEY } = process.env;
+
+sgMail.setApiKey(SENDGRID_KEY);
+
+const mail = {
+  to: "SamusievAnton@gmail.com",
+  from: "Samusefffff@gmail.com",
+  subject: "Hello",
+  html: "<a>Перейдите по ссылке для подтверждения регистрации</a>",
+};
+
+sgMail
+  .send(mail)
+  .then(() => console.log("Email"))
+  .catch((error) => console.log(error.message));
 
 const contactsRouter = require("./routes/api/contacts");
 const userRouter = require("./routes/api/users");
