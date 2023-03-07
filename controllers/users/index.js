@@ -4,6 +4,7 @@ const logOut = require("./logOut");
 const updateSubscription = require("./updateSubscription");
 const avatarUpdate = require("./avatarUpdate");
 const updateAvatarToCloud = require("./uplodeAvatarToCloud");
+const verifyEmail = require("./verifyEmail");
 
 module.exports = {
   signUp,
@@ -12,4 +13,5 @@ module.exports = {
   updateSubscription,
   avatarUpdate,
   updateAvatarToCloud,
+  verifyEmail,
 };
