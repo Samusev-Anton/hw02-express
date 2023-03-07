@@ -2,21 +2,14 @@ const { User } = require("../../models");
 const { Unauthorized } = require("http-errors");
 const jwt = require("jsonwebtoken");
 
-// const bcrypt = require("bcryptjs");
 const { SECRET_KEY } = process.env;
 
 const signIn = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  // if (!user) {
-  //   throw new Unauthorized(`Email ${email} not found`);
-  // }
-  // const passwordCompare = bcrypt.compareSync(password, user.password);
-  // if (passwordCompare) {
-  //   throw new Unauthorized(`Wrong password!`);
-  // }
-  if (!user || !user.comparePassword(password)) {
-    throw new Unauthorized();
+
+  if (!user || !user.verify || !user.comparePassword(password)) {
+    throw new Unauthorized("Email is wrong or not verify or password is wrong");
   }
 
   const payload = {
