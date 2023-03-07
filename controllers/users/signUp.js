@@ -10,6 +10,7 @@ const signUp = async (req, res, next) => {
     throw new Conflict(`User with ${email} already exist`);
   }
   const avatarURL = gravatar.url(email);
+  console.log();
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const result = await User.create({
     name,
@@ -20,12 +21,10 @@ const signUp = async (req, res, next) => {
   res.status(201).json({
     status: "success",
     code: 201,
-    data: {
-      user: {
-        email: result.email,
-        subscription: result.subscription,
-        avatarURL,
-      },
+    user: {
+      email: result.email,
+      subscription: result.subscription,
+      avatarURL,
     },
   });
 };
