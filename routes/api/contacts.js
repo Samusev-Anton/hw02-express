@@ -20,11 +20,11 @@ router.post("/", auth, validation(joiSchema), ctrlWrraper(ctrl.addContact));
 
 router.delete("/:contactId", auth, isValidId, ctrlWrraper(ctrl.removeContact));
 
-router.put(
+router.patch(
   "/:contactId",
   auth,
   isValidId,
-  validation(joiSchema),
+  // validation(joiSchema),
   ctrlWrraper(ctrl.updateContact)
 );
 

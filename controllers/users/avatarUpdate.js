@@ -25,7 +25,12 @@ const avatarUpdate = async (req, res) => {
 
     const resultUpload = path.join(avatarsDir, `${_id}${originalname}`);
     await fs.rename(tempUpload, resultUpload);
-    const avatarURL = path.join("public", "avatars", `${_id}${originalname}`);
+    // const avatarURL = path.join("public", "avatars", `${_id}${originalname}`);
+        const avatarURL = path.join(
+          "avatars",
+          `${_id}${originalname}`
+        );
+
     const result = await User.findByIdAndUpdate(
       _id,
       { avatarURL: avatarURL },

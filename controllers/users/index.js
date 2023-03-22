@@ -5,6 +5,8 @@ const updateSubscription = require("./updateSubscription");
 const avatarUpdate = require("./avatarUpdate");
 const updateAvatarToCloud = require("./uplodeAvatarToCloud");
 const verifyEmail = require("./verifyEmail");
+const sendTempPassword = require("./sendTempPassword");
+const changePassword = require("./changePassword");
 
 module.exports = {
   signUp,
@@ -14,4 +16,6 @@ module.exports = {
   avatarUpdate,
   updateAvatarToCloud,
   verifyEmail,
+  sendTempPassword,
+  changePassword,
 };

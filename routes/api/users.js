@@ -39,6 +39,10 @@ router.patch(
   ctrlWrraper(ctrl.updateAvatarToCloud)
 );
 
-router.get("/verify/:verificationToken", ctrlWrraper(ctrl.verifyEmail));
+router.patch("/verify/:verificationToken", ctrlWrraper(ctrl.verifyEmail));
+
+router.get("/:email", ctrlWrraper(ctrl.sendTempPassword));
+
+router.patch("/password", ctrlWrraper(ctrl.changePassword));
 
 module.exports = router;
