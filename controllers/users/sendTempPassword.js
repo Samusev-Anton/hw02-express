@@ -20,7 +20,6 @@ const sendTempPassword = async (req, res) => {
   res.json({
     temporaryPassword: temporaryPassword,
   });
-  console.log(user);
 };
 
 module.exports = sendTempPassword;
